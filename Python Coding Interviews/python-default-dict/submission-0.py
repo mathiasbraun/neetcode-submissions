@@ -1,0 +1,31 @@
+from collections import defaultdict
+from typing import List, Dict
+
+
+def count_chars(s: str) -> Dict[str, int]:
+    freq = defaultdict(int)
+    for char in s:
+        freq[char] += 1
+    return freq
+
+
+def nested_list_to_dict(nums: List[List[int]]) -> Dict[int, List[int]]:
+    output_dict = defaultdict(list)
+    for num in nums:
+        if num[0] in output_dict:
+            output_dict[num[0]].extend(num[1:len(num)])
+        else:
+            output_dict[num[0]] = num[1:len(num)]
+    return output_dict
+
+
+
+# do not modify below this line
+print(count_chars("hello"))
+print(count_chars("helloworld"))
+print(count_chars("areallylongstringwhyareyoureadingthishahalol"))
+
+print(nested_list_to_dict([[1, 2, 3], [4, 5, 6], [1, 4]]))
+print(nested_list_to_dict([[1, 2, 3, 4], [4, 5, 6, 7], [1, 4, 5, 6]]))
+print(nested_list_to_dict([[5, 2, 3, 4, 5], [4, 5, 6, 7, 8], [5, 6, 7, 8, 9]]))
+print(nested_list_to_dict([[3, 2, 3, 4, 5], [4, 5, 6, 7, 8], [5, 6, 7, 8]]))
