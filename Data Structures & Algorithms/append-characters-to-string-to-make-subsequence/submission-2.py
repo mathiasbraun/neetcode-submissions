@@ -1,0 +1,15 @@
+class Solution:
+    def appendCharacters(self, s: str, t: str) -> int:
+        if not t:
+            return 0
+
+        i, j = 0, 0
+        count = len(t)
+
+        while i < len(s) and j < len(t):
+            if s[i] == t[j]:
+                j += 1
+                count -= 1
+            i += 1
+
+        return count
